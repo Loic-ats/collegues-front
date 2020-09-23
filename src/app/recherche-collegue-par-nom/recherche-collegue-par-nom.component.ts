@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { matricule } from '../mock/matricules.mock';
+import { matricules } from '../mock/matricules.mock';
 
 @Component({
   selector: 'app-recherche-collegue-par-nom',
@@ -9,14 +9,15 @@ import { matricule } from '../mock/matricules.mock';
 export class RechercheCollegueParNomComponent implements OnInit {
 
   constructor() { }
-  listAffichage = false;
+  listeMatricules: string[];
 
   ngOnInit(): void {
   }
 
-  rechercherParMatricule(){
-
-    this.listAffichage = true;
+  rechercherParMatricule(): void {
+    this.listeMatricules = matricules;
   }
 
 }
+
+
