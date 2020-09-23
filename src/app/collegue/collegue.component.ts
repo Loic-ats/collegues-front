@@ -10,18 +10,25 @@ export class CollegueComponent implements OnInit {
 
   //dans ma vue j'ai un propriete col qui désigne me collègue et on va l'afficher
 
-@Input()col;
+  @Input() col;
   constructor() { }
+  modeAffichage = true;
 
   ngOnInit(): void {
   }
-
+  
   ModifCollegues() {
     console.log("Modifier un collègue");
-        }
+  }
+  
+  modifierCollegue(): void {
+    this.modeAffichage = false;
+  }
+  validerCollegue(): void {
+    this.modeAffichage = true;
+  }
 
-  nouveauCollegue(){
-    console.log("Création d’un nouveau collègue");
-         }
-   
+
+
+
 }

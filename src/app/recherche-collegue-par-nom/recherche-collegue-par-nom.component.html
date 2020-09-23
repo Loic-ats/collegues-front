@@ -1,0 +1,17 @@
+<form class="form-inline mt-5">
+    <div class="form-group mb-2 ml-3 ">
+        <label for="staticEmail2" class="sr-only">Email</label>
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="rechercher par nom">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="inputPassword2" class="sr-only">Password</label>
+        <input type="password" class="form-control" id="inputPassword2" placeholder="Nom collegues">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2" (click)="rechercherParMatricule()">Rechercher</button>
+</form>
+
+<div *ngIf="listAffichage" class="mb-2 ml-3 border border-primary">
+    <ul>
+        <li *ngIf="let obj of matricules">{{matricule}}</li>
+    </ul>
+</div>
