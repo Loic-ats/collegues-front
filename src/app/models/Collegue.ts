@@ -7,8 +7,4 @@ export class Collegue {
     dateDeNaissance: Date;
     photoUrl: String;
 
-    ModifCollegues() {
-        alert("Modification du collègue");
-        }
-
 }
