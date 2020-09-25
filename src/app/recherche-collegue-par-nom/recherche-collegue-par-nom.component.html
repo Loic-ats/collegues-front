@@ -2,16 +2,17 @@
     <div class="form-group row">
       <label for="inputEmail3" class="col col-form-label">Rechercher par nom</label>
       <div class="col">
-        <input type="text" class="form-control" id="rechercher" placeholder="Nom collegues">
+        <input type="text" class="form-control" id="rechercher" placeholder="Nom collegues" #saisieNom>
       </div>
       <div class="col">
-        <button type="button" class="btn btn-primary" (click)="rechercherParMatricule()">Rechercher</button>
+        <button type="button" class="btn btn-primary" (click)="rechercherParMatricule(saisieNom.value)">Rechercher</button>
       </div>
     </div>
   
   </form>
   
   <div *ngIf="listeMatricules" class="border border-primary">
+    <button class="btn btn-link" (click)="selectionner(mat)">{{mat}}</button>
     <ul>
       <li *ngFor="let mat of listeMatricules">{{mat}}</li>
     </ul>

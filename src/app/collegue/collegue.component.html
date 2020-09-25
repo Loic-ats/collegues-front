@@ -24,12 +24,12 @@
     <div class="row">
       <div class="col card-text font-weight-bold">E-mail :</div>
       <div *ngIf="modeAffichage" class="col-sm card-text">{{col.email}}</div>
-      <input *ngIf="!modeAffichage" class="col-sm form-control form-control-sm" type="email" [value]="col.email">
+      <input  *ngIf="!modeAffichage" class="col-sm form-control form-control-sm" type="email" [value]="col.email">
     </div>
-
+       
     <div class="row">
       <div *ngIf="!modeAffichage" class="col card-text"> Photo URL :</div>
-      <input *ngIf="!modeAffichage" class="col form-control form-control-sm" type="text" [value]="col.photoUrl">
+      <input *ngIf="!modeAffichage" class="col form-control form-control-sm" type="text" [value]="col.photoUrl" >
     </div>
 
     <div class="row">

@@ -1,10 +1,10 @@
 export class Collegue {
-
-    matricule: string;
-    nom: string;
-    prenoms: string;
-    email: string;
-    dateDeNaissance: Date;
-    photoUrl: String;
-
+    
+   constructor( public matricule: string,
+    public nom: string,
+    public prenoms: string,
+    public email: string,
+    public dateDeNaissance: Date,
+    public photoUrl: String,) {}
+  
 }

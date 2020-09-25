@@ -9,15 +9,36 @@ import { DataService } from '../services/data.service';
 export class RechercheCollegueParNomComponent implements OnInit {
 
   constructor(private dataServ: DataService) { }
+
   listeMatricules: string[];
+  matriculeNonTrouve = false;
+  erreurTechnique = false;
+
 
   ngOnInit(): void {
   }
 
-  rechercherParMatricule(): void {
-    this.listeMatricules =this.dataServ.rechercherParNom('xxx');
+rechercherParMatricule(nomSaisi :string ): void {
+ this.listeMatricules = null; // effacer les matricules affichés
+    this.dataServ.rechercherParNom(nomSaisi)
+      .subscribe(matriculesBack => {
+        this.erreurTechnique = false;
+        if (matriculesBack.length > 0) {
+          this.matriculeNonTrouve = false;
+          this.listeMatricules = matriculesBack;
+        } else {
+          this.matriculeNonTrouve = true;
+        }
+      },
+        error => this.erreurTechnique = true);
   }
   
+  selectionner(matricule: string): void {
+    this.dataServ.selectionnerMatricule(matricule)
+      .subscribe(() => { },
+        error => this.erreurTechnique = true);
+  }
+
 }
 
 
