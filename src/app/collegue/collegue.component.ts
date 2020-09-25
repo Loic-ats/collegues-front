@@ -1,5 +1,8 @@
 import { style } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
+import { Collegue } from '../models/Collegue';
+import { DataService } from '../services/data.service';
+
 
 @Component({
   selector: 'app-collegue',
@@ -11,8 +14,10 @@ export class CollegueComponent implements OnInit {
   //dans ma vue j'ai un propriete col qui désigne me collègue et on va l'afficher
 
   @Input() col;
-  constructor() { }
+  constructor(private dataServ: DataService) { }
+
   modeAffichage = true;
+  listeCollegues : Collegue[];
 
   ngOnInit(): void {
   }
@@ -28,7 +33,12 @@ export class CollegueComponent implements OnInit {
     this.modeAffichage = true;
   }
 
-
-
-
+  afficherlisteCollegues(): void {
+   this.dataServ.recupererCollegueCourant().subscribe (
+    Collegues => this.listeCollegues = Collegues,
+    error => { },
+    () => { }
+  );
+;
+  }
 }
