@@ -1,31 +1,29 @@
 <form>
     <div class="form-group">
       <label>Matricule</label>
-      <input type="email" class="form-control" aria-describedby="emailHelp">
+      <input name="Matricule" type="text" class="form-control" [(ngModel)]="Collegue.Matricule" required >
       <small class="form-text text-muted">le matricule n’est pas proposé à la saisie</small>
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Nom</label>
-        <input type="email" class="form-control" aria-describedby="emailHelp">
+        <input name="Nom" type="text" class="form-control"[(ngModel)]="Collegue.Nom" required>
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Prenom</label>
-        <input type="email" class="form-control"  aria-describedby="emailHelp">
-     
+        <input name ="Prenom" type="text" class="form-control" [(ngModel)]="Collegue.Prenom" required>
     </div>
-          <div class="form-group">
+        <div class="form-group">
       <label for="exampleInputEmail1">Date de naissance</label>
-      <input type="email" class="form-control" aria-describedby="emailHelp">
-      
+      <input name="DateDeNaissance" type="texte" class="form-control" [(ngModel)]="Collegue.DatedeNaissance" required>
     </div>
-    <div class="form-group">
+        <div class="form-group">
       <label for="exampleInputPassword1">Email</label>
-      <input class="form-control" >
+      <input name="Email" type ="email"class="form-control" [(ngModel)]="Collegue.Email" required>
     </div>
-    <div class="form-group">
+        <div class="form-group">
         <label for="exampleInputPassword1">Photo URl</label>
-        <input class="form-control">
+        <input name="PhotoURL" class="form-control" [(ngModel)]="Collegue.PhotoUrl" required minlength="7">
         <small>la photo a minimum 7 caractères</small>
     </div>
-    <button type="submit" class="btn btn-primary">Valider</button>
+    <button type="submit" class="btn btn-primary" (click) = "Valider ()">Valider</button>
 </form>
