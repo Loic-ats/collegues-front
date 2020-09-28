@@ -1,5 +1,7 @@
+import { DataService } from './../services/data.service';
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { colleguesTab } from '../mock/matricules.mock'
+
 
 @Component({
   selector: 'app-recherche-collegue-par-nom',
@@ -8,37 +10,40 @@ import { DataService } from '../services/data.service';
 })
 export class RechercheCollegueParNomComponent implements OnInit {
 
-  constructor(private dataServ: DataService) { }
+  matricules: string[];
 
-  listeMatricules: string[];
   matriculeNonTrouve = false;
   erreurTechnique = false;
 
+  constructor(private dataSrv: DataService) { }
 
   ngOnInit(): void {
   }
 
-rechercherParMatricule(nomSaisi :string ): void {
- this.listeMatricules = null; // effacer les matricules affichés
-    this.dataServ.rechercherParNom(nomSaisi)
+  rechercherCol(nomSaisi: string): void {
+    this.matricules = null; // effacer les matricules affichés
+    this.dataSrv.rechercherParNom(nomSaisi)
       .subscribe(matriculesBack => {
         this.erreurTechnique = false;
         if (matriculesBack.length > 0) {
           this.matriculeNonTrouve = false;
-          this.listeMatricules = matriculesBack;
+          this.matricules = matriculesBack;
         } else {
           this.matriculeNonTrouve = true;
         }
+
       },
         error => this.erreurTechnique = true);
   }
-  
+
   selectionner(matricule: string): void {
-    this.dataServ.selectionnerMatricule(matricule)
+    this.dataSrv.selectionnerMatricule(matricule)
       .subscribe(() => { },
         error => this.erreurTechnique = true);
   }
 
+
 }
+
 
 
