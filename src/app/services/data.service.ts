@@ -1,11 +1,11 @@
 import { CreerCollegueForm } from './../creer-collegue/creer-collegue-form';
 import { environment } from './../../environments/environment';
-import { c1, c2 } from './../mock/collegues.mock';
 import { Collegue } from './../models/Collegue';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { CollegueGalerie } from './../models/CollegueGalerie';
 
 // tap (avant s'appelait do)
 // peek en Stream Java
@@ -20,7 +20,6 @@ interface CollegueBack {
   dateDeNaissance: string;
   photoUrl: string;
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +42,7 @@ export class DataService {
     return this.http.get<CollegueBack>(`${environment.collegueApiBaseUrl}/collegues/${matricule}`)
       .pipe(
         map(colBack => new Collegue(colBack.matricule, colBack.nom, colBack.prenom, colBack.email,
-          new Date(colBack.dateDeNaissance), colBack.photoUrl)),
+          new Date(colBack.dateDeNaissance),colBack.photoUrl)),
         tap(collegue => this.subCollegueSelectionne.next(collegue))
       );
   }
@@ -55,5 +54,9 @@ export class DataService {
       .pipe(
         map(colBack => new Collegue(colBack.matricule, colBack.nom, colBack.prenom, colBack.email,
           new Date(colBack.dateDeNaissance), colBack.photoUrl)));
+  }
+
+  AfficherPhotoDesCollegues(): Observable<CollegueGalerie> {
+    return this.http.get<CollegueGalerie>(`${environment.collegueApiBaseUrl}/collegues`);
   }
 }

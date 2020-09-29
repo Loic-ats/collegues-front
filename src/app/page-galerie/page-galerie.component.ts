@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Collegue } from '../models/Collegue';
+import { DataService } from './../services/data.service';
+import { CollegueGalerie } from './../models/CollegueGalerie';
 
 @Component({
   selector: 'app-page-galerie',
@@ -7,10 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageGalerieComponent implements OnInit {
 
-  constructor() { }
+  CollegueGalerieTab: CollegueGalerie [] =[];
+
+  constructor(private dataSrv: DataService) { }
 
   ngOnInit(): void {
+    this.dataSrv.AfficherPhotoDesCollegues().subscribe(
+      CollegueGalerie => this.CollegueGalerieTab.push(CollegueGalerie)
+    );
   }
-
 }
-
