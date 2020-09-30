@@ -10,11 +10,14 @@ import { CollegueGalerie } from './../models/CollegueGalerie';
 })
 export class PageGalerieComponent implements OnInit {
 
+  CollegueGallerie: CollegueGalerie;
   CollegueGalerieTab: CollegueGalerie [] =[];
-
   constructor(private dataSrv: DataService) { }
 
   ngOnInit(): void {
+  }
+
+ AfficherPhotoTousLesCollegues():void {
     this.dataSrv.AfficherPhotoDesCollegues().subscribe(
       CollegueGalerie => this.CollegueGalerieTab.push(CollegueGalerie)
     );

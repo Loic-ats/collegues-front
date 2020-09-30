@@ -57,6 +57,7 @@ export class DataService {
   }
 
   AfficherPhotoDesCollegues(): Observable<CollegueGalerie> {
-    return this.http.get<CollegueGalerie>(`${environment.collegueApiBaseUrl}/collegues`);
-  }
+    return this.http.get<CollegueGalerie>(`${environment.collegueApiBaseUrl}/collegues`).pipe(
+      map(colGallerie => new CollegueGalerie(colGallerie.matricule, colGallerie.photoUrl)));
+    }
 }

@@ -1,11 +1,5 @@
-<app-recherche-collegue-par-nom class="col-sm"></app-recherche-collegue-par-nom>
-
-<app-collegue class="col-sm-7"></app-collegue>
-
-<button (click)=" ngOnInit()" class="btn btn-primary">Afficher les collegues</button>
+<button (click)=" AfficherPhotoTousLesCollegues()" class="btn btn-primary mt-5">Afficher les collegues</button>
 <ul> 
-<li *ngFor="let Collegues of CollegueGalerieTab"> {{CollegueGalerie.photoUrl}} </li>
+<li *ngFor="let Collegues of CollegueGalerieTab"> {{CollegueGallerie | json }} </li>
 </ul>
 
-<img src="" class="rounded float-left" alt="...">
-<img src="" class="rounded float-right" alt="...">
